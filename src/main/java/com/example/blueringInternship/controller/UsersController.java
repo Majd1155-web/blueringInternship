@@ -31,6 +31,12 @@ public class UsersController {
         return usersService.GetUsers();
     }
 
+    @GetMapping({"getUsersById/{id}"})
+    @ResponseStatus(HttpStatus.OK)
+    public List<?> getUsersById(@PathVariable Integer id) {
+        return usersService.GetUsersById(id);
+    }
+
     @PatchMapping("updateUsers/{id}")
     @ResponseStatus(HttpStatus.OK)
     public String UpdateUser(@PathVariable Integer id, @RequestBody Map<String, Object> usersDTO) {

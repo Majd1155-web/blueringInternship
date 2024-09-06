@@ -41,6 +41,15 @@ public class UsersService {
                 })
                 .collect(Collectors.toList());
     }
+    public List<UsersDTO> GetUsersById(Integer id) {
+        return usersRepository.findById(id)
+                .stream()
+                .map(user -> {
+                    UsersDTO usersDTO = usersMapper.UsersEntityToUsersDTO(user);
+                    return usersDTO;
+                })
+                .collect(Collectors.toList());
+    }
 
     public void UpdateUser(Integer id, Map<String, Object> usersDTO) {
         UsersEntity user = usersRepository.findById(id).get();
